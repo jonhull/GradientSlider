@@ -39,6 +39,11 @@ The track displays a linear gradient with the minColor corresponding to the mini
 ### Rainbow
 When the `hasRainbow` property is set to true, the track displays a rainbow gradient which moves around the color wheel (starting and ending with red). The saturation & brightness are both pulled from the color in `minValue`.
 
+	slider.minValue = UIColor.blueColor() //This has full saturation & brightness
+	slider.hasRainbow = true
+
+![img alt](https://cloud.githubusercontent.com/assets/167242/9134881/5269de02-3cbd-11e5-9d78-056aca2b42d9.png)
+
 ### Convenience Methods
 Since one of the primary uses of the gradient sliders is to create color pickers, a few convenience methods have been provided for updating the colors.
 
