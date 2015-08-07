@@ -1,7 +1,7 @@
 # GradientSlider
 ![alt tag](https://cloud.githubusercontent.com/assets/167242/9134671/522e2f8a-3cbb-11e5-9d38-a0f1064a3e43.png)
 
-GradientSlider is a UIControl subclass which is similar to UISlider, but with a linear gradient coloring the slider’s track. Useful for creating color pickers. It is written in Swift.
+GradientSlider is a UIControl subclass which is similar to UISlider, but with a linear gradient coloring the slider’s track. Useful for creating color pickers. It is written in Swift 2 and reqires it.
 
 **Features**
 - Easily define a gradient by setting the min & max (i.e. left & right) colors

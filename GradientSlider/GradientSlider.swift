@@ -223,7 +223,7 @@ import UIKit
         commonSetup()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         minColor = aDecoder.decodeObjectForKey("minColor") as? UIColor ?? UIColor.lightGrayColor()
