@@ -1,4 +1,6 @@
 # GradientSlider
+![alt tag](https://cloud.githubusercontent.com/assets/167242/9134671/522e2f8a-3cbb-11e5-9d38-a0f1064a3e43.png)
+
 GradientSlider is a UIControl subclass which is similar to UISlider, but with a linear gradient coloring the slider’s track. Useful for creating color pickers. It is written in Swift.
 
 **features**
@@ -28,6 +30,7 @@ Drag a custom view into your storyboard and change it’s class to “GradientSl
 ## Setting the Track Gradient Programmatically
 ### Min/Max Color
 The track displays a linear gradient with the minColor corresponding to the minimumValue and the maxColor corresponding to the maximumValue. 
+
 	slider.minValue = UIColor.blueColor()
 	slider.maxValue = UIColor.orangeColor()
 
@@ -76,6 +79,11 @@ Here is an example of a hue slider which updates it’s own `thumbColor` to the 
 	    
 	    CATransaction.commit()
 	}
+
+Images showing the effect of dragging the hue slider
+![img alt](https://cloud.githubusercontent.com/assets/167242/9134674/55ae1c60-3cbb-11e5-888b-515dfc76898a.png)
+
+![img alt](https://cloud.githubusercontent.com/assets/167242/9134675/57c3043e-3cbb-11e5-8fa6-71b0f55b1105.png)
 
 ## Customizing the Track
 Besides the background gradient, the track is customizable in several ways using the following properties:
