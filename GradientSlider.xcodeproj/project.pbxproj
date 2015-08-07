@@ -12,6 +12,7 @@
 		FC1C41821B730A410083C062 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41801B730A410083C062 /* Main.storyboard */; };
 		FC1C41841B730A410083C062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41831B730A410083C062 /* Assets.xcassets */; };
 		FC1C41871B730A410083C062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41851B730A410083C062 /* LaunchScreen.storyboard */; };
+		FC1C418F1B730E530083C062 /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C418E1B730E530083C062 /* GradientSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FC1C41831B730A410083C062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1C41861B730A410083C062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC1C41881B730A410083C062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC1C418E1B730E530083C062 /* GradientSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				FC1C417C1B730A410083C062 /* AppDelegate.swift */,
 				FC1C417E1B730A410083C062 /* ViewController.swift */,
 				FC1C41801B730A410083C062 /* Main.storyboard */,
+				FC1C418E1B730E530083C062 /* GradientSlider.swift */,
 				FC1C41831B730A410083C062 /* Assets.xcassets */,
 				FC1C41851B730A410083C062 /* LaunchScreen.storyboard */,
 				FC1C41881B730A410083C062 /* Info.plist */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1C417F1B730A410083C062 /* ViewController.swift in Sources */,
+				FC1C418F1B730E530083C062 /* GradientSlider.swift in Sources */,
 				FC1C417D1B730A410083C062 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
