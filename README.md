@@ -47,19 +47,22 @@ When the `hasRainbow` property is set to true, the track displays a rainbow grad
 ### Convenience Methods
 Since one of the primary uses of the gradient sliders is to create color pickers, a few convenience methods have been provided for updating the colors.
 
-#### HSB
+**HSB**
 `setGradientForHueWithSaturation(saturation:CGFloat,brightness:CGFloat)` This method sets the track to a rainbow gradient with the given saturation and brightness. This is useful for choosing a hue in the context of the current saturation and brightness settings.
 
 `setGradientForSaturationWithHue(hue:CGFloat,brightness:CGFloat)` This method sets the track to a gradient varying from grey to fully saturated with the hue and brightness provided. This is useful for choosing a saturation value in the context of the current hue and brightness settings.
 
 `setGradientForBrightnessWithHue(hue:CGFloat,saturation:CGFloat)` This method sets the track to a gradient varying from black to full brightness with the hue and saturation provided. This is useful for choosing a brightness value in the context of the current hue and saturation settings.
 
-#### RGB
+**RGB**
 `setGradientForRedWithGreen(green:CGFloat, blue:CGFloat)` This method sets the track to a gradient with varying red for the given green & blue values.
 
 `setGradientForGreenWithRed(red:CGFloat, blue:CGFloat)` This method sets the track to a gradient with varying green for the given red & blue values.
 
 `setGradientForBlueWithRed(red:CGFloat, green:CGFloat)` This method sets the track to a gradient with varying blue for the given red & green values.
+
+**Grayscale**
+`setGradientForGrayscale()` This method sets the track to a gradient from black to white.
 
 ## Responding to User Interaction
 ### Target/Action

@@ -168,6 +168,12 @@ import UIKit
         maxColor = UIColor(red: red, green: green, blue: 1.0, alpha: 1.0)
     }
     
+    func setGradientForGrayscale(){
+        hasRainbow = false
+        minColor = UIColor.blackColor()
+        maxColor = UIColor.whiteColor()
+    }
+    
     
     //MARK: - Private Properties
     
