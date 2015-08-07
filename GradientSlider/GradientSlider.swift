@@ -150,6 +150,25 @@ import UIKit
         maxColor = UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
     }
     
+    func setGradientForRedWithGreen(green:CGFloat,blue:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: 0.0, green: green, blue: blue, alpha: 1.0)
+        maxColor = UIColor(red: 1.0, green: green, blue: blue, alpha: 1.0)
+    }
+    
+    func setGradientForGreenWithRed(red:CGFloat,blue:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: red, green: 0.0, blue: blue, alpha: 1.0)
+        maxColor = UIColor(red: red, green: 1.0, blue: blue, alpha: 1.0)
+    }
+    
+    func setGradientForBlueWithRed(red:CGFloat,green:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: red, green: green, blue: 0.0, alpha: 1.0)
+        maxColor = UIColor(red: red, green: green, blue: 1.0, alpha: 1.0)
+    }
+    
+    
     //MARK: - Private Properties
     
     private var _value:CGFloat = 0.0 // default 0.0. this value will be pinned to min/max
