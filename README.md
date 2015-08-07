@@ -34,6 +34,8 @@ The track displays a linear gradient with the minColor corresponding to the mini
 	slider.minValue = UIColor.blueColor()
 	slider.maxValue = UIColor.orangeColor()
 
+![img alt](https://cloud.githubusercontent.com/assets/167242/9134778/8c34e16e-3cbc-11e5-9c54-452e8d3a2af7.png)
+
 ### Rainbow
 When the `hasRainbow` property is set to true, the track displays a rainbow gradient which moves around the color wheel (starting and ending with red). The saturation & brightness are both pulled from the color in `minValue`.
 
