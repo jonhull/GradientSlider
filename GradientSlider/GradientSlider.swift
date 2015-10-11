@@ -17,6 +17,7 @@ import UIKit
     @IBInspectable var hasRainbow:Bool  = false {didSet{updateTrackColors()}}//Uses saturation & lightness from minColor
     @IBInspectable var minColor:UIColor = UIColor.blueColor() {didSet{updateTrackColors()}}
     @IBInspectable var maxColor:UIColor = UIColor.orangeColor() {didSet{updateTrackColors()}}
+    @IBInspectable var autoThumbColor:Bool  = true {didSet{updateThumbColor()}}
     
     @IBInspectable var value: CGFloat {
         get{return _value}
@@ -310,8 +311,10 @@ import UIKit
             layerSize = min(max(icon.size.height,icon.size.width),layerSize)
             _thumbIconLayer.cornerRadius = 0.0
             _thumbIconLayer.backgroundColor = UIColor.clearColor().CGColor
+            autoThumbColor = false
         }else{
             _thumbIconLayer.cornerRadius = layerSize/2.0
+            autoThumbColor = true
         }
         _thumbIconLayer.position = CGPointMake(halfSize, halfSize)
         _thumbIconLayer.bounds = CGRectMake(0, 0, layerSize, layerSize)
@@ -376,6 +379,14 @@ import UIKit
         }else{
             _thumbLayer.position = CGPointMake(left + (trackWidth * perc), halfHeight)
         }
+        updateThumbColor()
+    }
+    
+    private func updateThumbColor() {
+        if autoThumbColor {
+            let newColor = self.colorForValue(value)
+            self.thumbColor = newColor
+        }
     }
     
     private func valueForLocation(point:CGPoint)->CGFloat {
@@ -404,7 +415,31 @@ import UIKit
         return (perc * diff) + CGFloat(self.minimumValue)
     }
     
+    private func colorForValue(value:CGFloat)->UIColor {
+        if !hasRainbow {
+            var minRed   : CGFloat = 0.0
+            var minGreen : CGFloat = 0.0
+            var minBlue  : CGFloat = 0.0
+            var minAlpha : CGFloat = 0.0
+            minColor.getRed(&minRed, green: &minGreen, blue: &minBlue, alpha: &minAlpha)
+            
+            var maxRed   : CGFloat = 0.0
+            var maxGreen : CGFloat = 0.0
+            var maxBlue  : CGFloat = 0.0
+            var maxAlpha : CGFloat = 0.0
+            maxColor.getRed(&maxRed, green: &maxGreen, blue: &maxBlue, alpha: &maxAlpha)
+            
+            let red      : CGFloat = (minRed + value * (maxRed - minRed))
+            let green    : CGFloat = (minGreen + value * (maxGreen - minGreen))
+            let blue     : CGFloat = (minBlue + value * (maxBlue - minBlue))
+            let alpha    : CGFloat = (minAlpha + value * (maxAlpha - minAlpha))
+            return UIColor(red:red, green: green, blue:blue, alpha:alpha)
+        }
+        return UIColor(hue: value, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+    }
+    
     private func updateTrackColors() {
+        updateThumbColor()
         if !hasRainbow {
             _trackLayer.colors = [minColor.CGColor,maxColor.CGColor]
             _trackLayer.locations = [0.0,1.0]
