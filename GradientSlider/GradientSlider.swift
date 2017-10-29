@@ -275,7 +275,48 @@ import UIKit
         updateThumbPosition(animated: false)
     }
     
+    //MARK: - Convienience Colors
     
+    func setGradientForHueWithSaturation(saturation:CGFloat,brightness:CGFloat){
+        minColor = UIColor(hue: 0.0, saturation: saturation, brightness: brightness, alpha: 1.0)
+        hasRainbow = true
+    }
+    
+    func setGradientForSaturationWithHue(hue:CGFloat,brightness:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(hue: hue, saturation: 0.0, brightness: brightness, alpha: 1.0)
+        maxColor = UIColor(hue: hue, saturation: 1.0, brightness: brightness, alpha: 1.0)
+    }
+    
+    func setGradientForBrightnessWithHue(hue:CGFloat,saturation:CGFloat){
+        hasRainbow = false
+        minColor = UIColor.black
+        maxColor = UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
+    }
+    
+    func setGradientForRedWithGreen(green:CGFloat,blue:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: 0.0, green: green, blue: blue, alpha: 1.0)
+        maxColor = UIColor(red: 1.0, green: green, blue: blue, alpha: 1.0)
+    }
+    
+    func setGradientForGreenWithRed(red:CGFloat,blue:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: red, green: 0.0, blue: blue, alpha: 1.0)
+        maxColor = UIColor(red: red, green: 1.0, blue: blue, alpha: 1.0)
+    }
+    
+    func setGradientForBlueWithRed(red:CGFloat,green:CGFloat){
+        hasRainbow = false
+        minColor = UIColor(red: red, green: green, blue: 0.0, alpha: 1.0)
+        maxColor = UIColor(red: red, green: green, blue: 1.0, alpha: 1.0)
+    }
+    
+    func setGradientForGrayscale(){
+        hasRainbow = false
+        minColor = UIColor.black
+        maxColor = UIColor.white
+    }
     
     //MARK: - Touch Tracking
     
