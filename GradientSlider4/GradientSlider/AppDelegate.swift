@@ -5,7 +5,7 @@
 //  Created by Jonathan Hull on 8/5/15.
 //  Copyright © 2015 Jonathan Hull. All rights reserved.
 //
-//  Updated to Swift 4.1 by Brad Dowling
+//  Updated to Swift 4.1
 
 import UIKit
 
