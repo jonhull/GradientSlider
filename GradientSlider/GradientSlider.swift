@@ -74,7 +74,7 @@ import UIKit
     
     var continuous: Bool = true // if set, value change events are generated any time the value changes due to dragging. default = YES
     
-    var actionBlock:(GradientSlider,CGFloat)->() = {slider,newValue in }
+    var actionBlock:(GradientSlider,CGFloat, Bool)->() = {slider,newValue,finished in }
     
     @IBInspectable var thickness:CGFloat = defaultThickness {
         didSet{
@@ -342,7 +342,7 @@ import UIKit
         setValue(newValue, animated: false)
         if(continuous){
             sendActions(for: UIControlEvents.valueChanged)
-            actionBlock(self,newValue)
+            actionBlock(self,newValue,false)
         }
         return true
     }
@@ -353,7 +353,7 @@ import UIKit
             let newValue = valueForLocation(point: pt)
             setValue(newValue, animated: false)
         }
-        actionBlock(self,_value)
+        actionBlock(self,_value,true)
         sendActions(for: [UIControlEvents.valueChanged, UIControlEvents.touchUpInside])
         
     }

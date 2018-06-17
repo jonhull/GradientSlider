@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        hueSlider.actionBlock = {slider,newValue in
+        hueSlider.actionBlock = {slider,newValue,finished in
             CATransaction.begin()
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
             self.brightnessSlider.maxColor = UIColor(hue: newValue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
