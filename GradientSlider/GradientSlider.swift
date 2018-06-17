@@ -227,11 +227,12 @@ import UIKit
     }
     
     //MARK: - Layout
-    func intrinsicContentSize()->CGSize {
+    override var intrinsicContentSize:CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: thumbSize)
     }
     
-    func alignmentRectInsets() -> UIEdgeInsets {
+//    func alignmentRectInsets() -> UIEdgeInsets {
+    override var alignmentRectInsets: UIEdgeInsets {
         return UIEdgeInsetsMake(4.0, 2.0, 4.0, 2.0)
     }
     
@@ -277,36 +278,36 @@ import UIKit
     
     //MARK: - Convienience Colors
     
-    func setGradientForHueWithSaturation(saturation:CGFloat,brightness:CGFloat){
+    func setGradientVaryingHue(saturation:CGFloat,brightness:CGFloat){
         minColor = UIColor(hue: 0.0, saturation: saturation, brightness: brightness, alpha: 1.0)
         hasRainbow = true
     }
     
-    func setGradientForSaturationWithHue(hue:CGFloat,brightness:CGFloat){
+    func setGradientVaryingSaturation(hue:CGFloat,brightness:CGFloat){
         hasRainbow = false
         minColor = UIColor(hue: hue, saturation: 0.0, brightness: brightness, alpha: 1.0)
         maxColor = UIColor(hue: hue, saturation: 1.0, brightness: brightness, alpha: 1.0)
     }
     
-    func setGradientForBrightnessWithHue(hue:CGFloat,saturation:CGFloat){
+    func setGradientVaryingBrightness(hue:CGFloat,saturation:CGFloat){
         hasRainbow = false
         minColor = UIColor.black
         maxColor = UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
     }
     
-    func setGradientForRedWithGreen(green:CGFloat,blue:CGFloat){
+    func setGradientVaryingRed(green:CGFloat,blue:CGFloat){
         hasRainbow = false
         minColor = UIColor(red: 0.0, green: green, blue: blue, alpha: 1.0)
         maxColor = UIColor(red: 1.0, green: green, blue: blue, alpha: 1.0)
     }
     
-    func setGradientForGreenWithRed(red:CGFloat,blue:CGFloat){
+    func setGradientVaryingGreen(red:CGFloat,blue:CGFloat){
         hasRainbow = false
         minColor = UIColor(red: red, green: 0.0, blue: blue, alpha: 1.0)
         maxColor = UIColor(red: red, green: 1.0, blue: blue, alpha: 1.0)
     }
     
-    func setGradientForBlueWithRed(red:CGFloat,green:CGFloat){
+    func setGradientVaryingBlue(red:CGFloat,green:CGFloat){
         hasRainbow = false
         minColor = UIColor(red: red, green: green, blue: 0.0, alpha: 1.0)
         maxColor = UIColor(red: red, green: green, blue: 1.0, alpha: 1.0)
@@ -321,6 +322,7 @@ import UIKit
     //MARK: - Touch Tracking
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        super.beginTracking(touch, with: event)
         let pt = touch.location(in: self)
         
         let center = _thumbLayer.position
@@ -334,6 +336,7 @@ import UIKit
     }
     
     override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        super.continueTracking(touch, with: event)
         let pt = touch.location(in: self)
         let newValue = valueForLocation(point: pt)
         setValue(newValue, animated: false)
@@ -345,6 +348,7 @@ import UIKit
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        super.endTracking(touch, with: event)
         if let pt = touch?.location(in: self){
             let newValue = valueForLocation(point: pt)
             setValue(newValue, animated: false)
@@ -404,7 +408,7 @@ import UIKit
         
         if !hasRainbow {
             // The colors to use
-            _trackLayer.colors = [minColor, maxColor]
+            _trackLayer.colors = [minColor.cgColor, maxColor.cgColor]
             
             // The location of each color, from left to right (min value 0, max value 1)
             _trackLayer.locations = [0.0, 1.0]

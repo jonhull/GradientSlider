@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,83 +18,78 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="moon" maximumValueImage="sun" translatesAutoresizingMaskIntoConstraints="NO" id="nCT-9b-3lG">
-                                <rect key="frame" x="18" y="79" width="564" height="31"/>
-                            </slider>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-R9-wtT" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
-                                <rect key="frame" x="18" y="129" width="564" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                        <color key="value" red="0.62307602169999998" green="0.21488943699999999" blue="0.94452863929999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
-                                        <color key="value" red="0.11780811099999999" green="0.92091393470000005" blue="0.90016001459999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="minimumValueImage" value="moon"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="maximumValueImage" value="sun"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hq3-Xu-2Sl">
-                                <rect key="frame" x="18" y="204" width="564" height="31"/>
-                            </slider>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ES1-8x-tqc" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
-                                <rect key="frame" x="18" y="254" width="564" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                        <color key="value" red="0.15294117647058825" green="0.90980392156862744" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Bj-h3h" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
-                                <rect key="frame" x="18" y="303" width="564" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="minColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
-                                        <color key="value" red="0.11780811099999999" green="0.92091393470000005" blue="0.90016001459999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="thumbIcon" value="smallSun"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="thickness">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="M6g-Fw-tMO">
+                                <rect key="frame" x="16" y="60" width="343" height="344"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="moon" maximumValueImage="sun" translatesAutoresizingMaskIntoConstraints="NO" id="nCT-9b-3lG">
+                                        <rect key="frame" x="-2" y="0.0" width="347" height="31"/>
+                                    </slider>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-R9-wtT" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="343" height="28"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="minColor">
+                                                <color key="value" red="0.62307602169999998" green="0.21488943699999999" blue="0.94452863929999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
+                                                <color key="value" red="0.11780811099999999" green="0.92091393470000005" blue="0.90016001459999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="minimumValueImage" value="moon"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="maximumValueImage" value="sun"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hq3-Xu-2Sl">
+                                        <rect key="frame" x="-2" y="158" width="347" height="31"/>
+                                    </slider>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ES1-8x-tqc" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="238" width="343" height="28"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="minColor">
+                                                <color key="value" red="0.15294117647058825" green="0.90980392156862744" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Bj-h3h" customClass="GradientSlider" customModule="GradientSlider" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="316" width="343" height="28"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="minColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="maxColor">
+                                                <color key="value" red="0.11780811099999999" green="0.92091393470000005" blue="0.90016001459999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="thumbIcon" value="smallSun"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thickness">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="Hq3-Xu-2Sl" secondAttribute="leading" id="0VP-Mw-d1m"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="0tN-R9-wtT" secondAttribute="leading" id="1Ym-dy-Q0D"/>
-                            <constraint firstItem="Hq3-Xu-2Sl" firstAttribute="top" secondItem="0tN-R9-wtT" secondAttribute="bottom" constant="43" id="2x7-rT-hk9"/>
-                            <constraint firstItem="gc1-Bj-h3h" firstAttribute="top" secondItem="ES1-8x-tqc" secondAttribute="bottom" constant="21" id="5Ja-BH-7I4"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="nCT-9b-3lG" secondAttribute="leading" id="6ZV-Ds-ENF"/>
-                            <constraint firstItem="0tN-R9-wtT" firstAttribute="top" secondItem="nCT-9b-3lG" secondAttribute="bottom" constant="24" id="9uc-RB-wzv"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ES1-8x-tqc" secondAttribute="leading" id="As2-aT-Jof"/>
-                            <constraint firstItem="nCT-9b-3lG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="DY4-p5-EFr"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="gc1-Bj-h3h" secondAttribute="leading" id="IdJ-6d-eRw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ES1-8x-tqc" secondAttribute="trailing" id="NBA-uC-X69"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gc1-Bj-h3h" secondAttribute="trailing" id="PpX-XU-RKv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nCT-9b-3lG" secondAttribute="trailing" id="WI2-lp-WsN"/>
-                            <constraint firstItem="ES1-8x-tqc" firstAttribute="top" secondItem="Hq3-Xu-2Sl" secondAttribute="bottom" constant="24" id="hcR-kh-hXK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Hq3-Xu-2Sl" secondAttribute="trailing" id="uWr-CE-bKp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0tN-R9-wtT" secondAttribute="trailing" id="ysb-rN-F0o"/>
+                            <constraint firstItem="M6g-Fw-tMO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="OWn-9a-zcm"/>
+                            <constraint firstItem="M6g-Fw-tMO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="SSx-4e-EeS"/>
+                            <constraint firstAttribute="trailing" secondItem="M6g-Fw-tMO" secondAttribute="trailing" constant="16" id="rH1-Zr-Zqu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -100,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="367"/>
+            <point key="canvasLocation" x="304.80000000000001" y="366.56671664167919"/>
         </scene>
     </scenes>
     <resources>
