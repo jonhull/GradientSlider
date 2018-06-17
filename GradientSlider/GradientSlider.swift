@@ -14,16 +14,16 @@ import UIKit
     static var defaultThumbSize:CGFloat = 28.0
     
     //MARK: Properties
-    @IBInspectable var hasRainbow:Bool  = false {didSet{updateTrackColors()}}//Uses saturation & lightness from minColor
-    @IBInspectable var minColor:UIColor = UIColor.blueColor() {didSet{updateTrackColors()}}
-    @IBInspectable var maxColor:UIColor = UIColor.orangeColor() {didSet{updateTrackColors()}}
+    @IBInspectable public var hasRainbow:Bool  = false {didSet{updateTrackColors()}}
+    @IBInspectable public var minColor:UIColor = UIColor.blue {didSet{updateTrackColors()}}
+    @IBInspectable public var maxColor:UIColor = UIColor.orange {didSet{updateTrackColors()}}
     
     @IBInspectable var value: CGFloat {
         get{return _value}
         set{setValue(newValue, animated:true)}
     }
     
-    func setValue(value:CGFloat, animated:Bool = true) {
+    func setValue(_ value:CGFloat, animated:Bool = true) {
         _value = max(min(value,self.maximumValue),self.minimumValue)
         updateThumbPosition(animated: animated)
     }
@@ -36,14 +36,14 @@ import UIKit
             if let img = minimumValueImage {
                 let imgLayer = _minTrackImageLayer ?? {
                     let l = CALayer()
-                    l.anchorPoint = CGPointMake(0.0, 0.5)
+                    l.anchorPoint = CGPoint(x: 0.0, y: 0.5)
                     self.layer.addSublayer(l)
                     return l
-                }()
-                imgLayer.contents = img.CGImage
-                imgLayer.bounds = CGRectMake(0, 0, img.size.width, img.size.height)
+                    }()
+                imgLayer.contents = img.cgImage
+                imgLayer.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
                 _minTrackImageLayer = imgLayer
-                    
+                
             }else{
                 _minTrackImageLayer?.removeFromSuperlayer()
                 _minTrackImageLayer = nil
@@ -56,12 +56,12 @@ import UIKit
             if let img = maximumValueImage {
                 let imgLayer = _maxTrackImageLayer ?? {
                     let l = CALayer()
-                    l.anchorPoint = CGPointMake(1.0, 0.5)
+                    l.anchorPoint = CGPoint(x: 1.0, y: 0.5)
                     self.layer.addSublayer(l)
                     return l
                     }()
-                imgLayer.contents = img.CGImage
-                imgLayer.bounds = CGRectMake(0, 0, img.size.width, img.size.height)
+                imgLayer.contents = img.cgImage
+                imgLayer.bounds = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
                 _maxTrackImageLayer = imgLayer
                 
             }else{
@@ -83,19 +83,19 @@ import UIKit
         }
     }
     
-    var trackBorderColor:UIColor? {
+    @IBInspectable var trackBorderColor:UIColor? {
         set{
-            _trackLayer.borderColor = newValue?.CGColor
+            _trackLayer.borderColor = newValue?.cgColor
         }
         get{
             if let color = _trackLayer.borderColor {
-                return UIColor(CGColor: color)
+                return UIColor(cgColor: color)
             }
             return nil
         }
     }
     
-    var trackBorderWidth:CGFloat {
+    @IBInspectable var trackBorderWidth:CGFloat {
         set{
             _trackLayer.borderWidth = newValue
         }
@@ -107,28 +107,172 @@ import UIKit
     var thumbSize:CGFloat = defaultThumbSize {
         didSet{
             _thumbLayer.cornerRadius = thumbSize / 2.0
-            _thumbLayer.bounds = CGRectMake(0, 0, thumbSize, thumbSize)
+            _thumbLayer.bounds = CGRect(x:0, y: 0, width: thumbSize, height: thumbSize)
             self.invalidateIntrinsicContentSize()
         }
     }
     
     @IBInspectable var thumbIcon:UIImage? = nil {
         didSet{
-            _thumbIconLayer.contents = thumbIcon?.CGImage
+            _thumbIconLayer.contents = thumbIcon?.cgImage
         }
     }
     
     var thumbColor:UIColor {
         get {
             if let color = _thumbIconLayer.backgroundColor {
-                return UIColor(CGColor: color)
+                return UIColor(cgColor: color)
             }
-            return UIColor.whiteColor()
+            return UIColor.white
         }
         set {
-            _thumbIconLayer.backgroundColor = newValue.CGColor
+            _thumbIconLayer.backgroundColor = newValue.cgColor
             thumbIcon = nil
         }
+    }
+    
+    //MARK: - Private Properties
+    
+    private var _value:CGFloat = 0.0 // default 0.0. this value will be pinned to min/max
+    
+    private var _thumbLayer:CALayer = {
+        let thumb = CALayer()
+        thumb.cornerRadius = defaultThumbSize/2.0
+        thumb.bounds = CGRect(x: 0, y: 0, width: defaultThumbSize, height: defaultThumbSize)
+        thumb.backgroundColor = UIColor.white.cgColor
+        thumb.shadowColor = UIColor.black.cgColor
+        thumb.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        thumb.shadowRadius = 2.0
+        thumb.shadowOpacity = 0.25
+        thumb.borderColor = UIColor.black.withAlphaComponent(0.15).cgColor
+        thumb.borderWidth = 0.5
+        return thumb
+    }()
+    
+    private var _trackLayer:CAGradientLayer = {
+        let track = CAGradientLayer()
+        track.cornerRadius = defaultThickness / 2.0
+        track.startPoint = CGPoint(x: 0.0, y: 0.5)
+        track.endPoint = CGPoint(x: 1.0, y: 0.5)
+        track.locations = [0.0,1.0]
+        track.colors = [UIColor.blue.cgColor,UIColor.orange.cgColor]
+        track.borderColor = UIColor.black.cgColor
+        return track
+    }()
+    
+    private var _minTrackImageLayer:CALayer? = nil
+    private var _maxTrackImageLayer:CALayer? = nil
+    
+    private var _thumbIconLayer:CALayer = {
+        let size = defaultThumbSize - 4
+        let iconLayer = CALayer()
+        iconLayer.cornerRadius = size/2.0
+        iconLayer.bounds = CGRect(x: 0, y: 0, width: size, height: size)
+        iconLayer.backgroundColor = UIColor.white.cgColor
+        return iconLayer
+    }()
+    
+    //MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonSetup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        minColor = aDecoder.decodeObject(forKey: "minColor") as? UIColor ?? UIColor.lightGray
+        maxColor = aDecoder.decodeObject(forKey: "maxColor") as? UIColor ?? UIColor.darkGray
+        
+        value = aDecoder.decodeObject(forKey: "value") as? CGFloat ?? 0.0
+        minimumValue = aDecoder.decodeObject(forKey: "minimumValue") as? CGFloat ?? 0.0
+        maximumValue = aDecoder.decodeObject(forKey: "maximumValue") as? CGFloat ?? 1.0
+        
+        minimumValueImage = aDecoder.decodeObject(forKey: "minimumValueImage") as? UIImage
+        maximumValueImage = aDecoder.decodeObject(forKey: "maximumValueImage") as? UIImage
+        
+        thickness = aDecoder.decodeObject(forKey: "thickness") as? CGFloat ?? 2.0
+        
+        thumbIcon = aDecoder.decodeObject(forKey: "thumbIcon") as? UIImage
+        
+        commonSetup()
+    }
+    
+    
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        
+        aCoder.encode(minColor, forKey: "minColor")
+        aCoder.encode(maxColor, forKey: "maxColor")
+        
+        aCoder.encode(value, forKey: "value")
+        aCoder.encode(minimumValue, forKey: "minimumValue")
+        aCoder.encode(maximumValue, forKey: "maximumValue")
+        
+        aCoder.encode(minimumValueImage, forKey: "minimumValueImage")
+        aCoder.encode(maximumValueImage, forKey: "maximumValueImage")
+        
+        aCoder.encode(thickness, forKey: "thickness")
+        
+        aCoder.encode(thumbIcon, forKey: "thumbIcon")
+        
+    }
+    
+    private func commonSetup() {
+        self.layer.delegate = self
+        self.layer.addSublayer(_trackLayer)
+        self.layer.addSublayer(_thumbLayer)
+        _thumbLayer.addSublayer(_thumbIconLayer)
+    }
+    
+    //MARK: - Layout
+    func intrinsicContentSize()->CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: thumbSize)
+    }
+    
+    func alignmentRectInsets() -> UIEdgeInsets {
+        return UIEdgeInsetsMake(4.0, 2.0, 4.0, 2.0)
+    }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        
+        if layer != self.layer {return}
+        
+        var w = self.bounds.width
+        let h = self.bounds.height
+        var left:CGFloat = 2.0
+        
+        if let minImgLayer = _minTrackImageLayer {
+            minImgLayer.position = CGPoint(x: 0.0, y: h/2.0)
+            left = minImgLayer.bounds.width + 13.0
+        }
+        w -= left
+        
+        if let maxImgLayer = _maxTrackImageLayer {
+            maxImgLayer.position = CGPoint(x: self.bounds.width, y: h/2.0)
+            w -= (maxImgLayer.bounds.width + 13.0)
+        }else{
+            w -= 2.0
+        }
+        
+        _trackLayer.bounds = CGRect(x: 0, y: 0, width: w, height: thickness)
+        _trackLayer.position = CGPoint(x: w/2.0 + left,y: h/2.0)
+        
+        let halfSize = thumbSize/2.0
+        var layerSize = thumbSize - 4.0
+        if let icon = thumbIcon {
+            layerSize = min(max(icon.size.height,icon.size.width),layerSize)
+            _thumbIconLayer.cornerRadius = 0.0
+            _thumbIconLayer.backgroundColor = UIColor.clear.cgColor
+        }else{
+            _thumbIconLayer.cornerRadius = layerSize/2.0
+        }
+        _thumbIconLayer.position = CGPoint(x: halfSize, y: halfSize)
+        _thumbIconLayer.bounds = CGRect(x: 0, y: 0, width: layerSize, height: layerSize)
+        
+        
+        updateThumbPosition(animated: false)
     }
     
     //MARK: - Convienience Colors
@@ -146,7 +290,7 @@ import UIKit
     
     func setGradientForBrightnessWithHue(hue:CGFloat,saturation:CGFloat){
         hasRainbow = false
-        minColor = UIColor.blackColor()
+        minColor = UIColor.black
         maxColor = UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
     }
     
@@ -170,197 +314,49 @@ import UIKit
     
     func setGradientForGrayscale(){
         hasRainbow = false
-        minColor = UIColor.blackColor()
-        maxColor = UIColor.whiteColor()
+        minColor = UIColor.black
+        maxColor = UIColor.white
     }
-    
-    
-    //MARK: - Private Properties
-    
-    private var _value:CGFloat = 0.0 // default 0.0. this value will be pinned to min/max
-    
-    private var _thumbLayer:CALayer = {
-        let thumb = CALayer()
-        thumb.cornerRadius = defaultThumbSize/2.0
-        thumb.bounds = CGRectMake(0, 0, defaultThumbSize, defaultThumbSize)
-        thumb.backgroundColor = UIColor.whiteColor().CGColor
-        thumb.shadowColor = UIColor.blackColor().CGColor
-        thumb.shadowOffset = CGSizeMake(0.0, 2.5)
-        thumb.shadowRadius = 2.0
-        thumb.shadowOpacity = 0.25
-        thumb.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.15).CGColor
-        thumb.borderWidth = 0.5
-        return thumb
-    }()
-    
-    private var _trackLayer:CAGradientLayer = {
-        let track = CAGradientLayer()
-        track.cornerRadius = defaultThickness / 2.0
-        track.startPoint = CGPointMake(0.0, 0.5)
-        track.endPoint = CGPointMake(1.0, 0.5)
-        track.locations = [0.0,1.0]
-        track.colors = [UIColor.blueColor().CGColor,UIColor.orangeColor().CGColor]
-        track.borderColor = UIColor.blackColor().CGColor
-        return track
-    }()
-    
-    private var _minTrackImageLayer:CALayer? = nil
-    private var _maxTrackImageLayer:CALayer? = nil
-    
-    private var _thumbIconLayer:CALayer = {
-        let size = defaultThumbSize - 4
-        let iconLayer = CALayer()
-        iconLayer.cornerRadius = size/2.0
-        iconLayer.bounds = CGRectMake(0, 0, size, size)
-        iconLayer.backgroundColor = UIColor.whiteColor().CGColor
-        return iconLayer
-    }()
-    
-    //MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonSetup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        minColor = aDecoder.decodeObjectForKey("minColor") as? UIColor ?? UIColor.lightGrayColor()
-        maxColor = aDecoder.decodeObjectForKey("maxColor") as? UIColor ?? UIColor.darkGrayColor()
-        
-        value = aDecoder.decodeObjectForKey("value") as? CGFloat ?? 0.0
-        minimumValue = aDecoder.decodeObjectForKey("minimumValue") as? CGFloat ?? 0.0
-        maximumValue = aDecoder.decodeObjectForKey("maximumValue") as? CGFloat ?? 1.0
-
-        minimumValueImage = aDecoder.decodeObjectForKey("minimumValueImage") as? UIImage
-        maximumValueImage = aDecoder.decodeObjectForKey("maximumValueImage") as? UIImage
-        
-        thickness = aDecoder.decodeObjectForKey("thickness") as? CGFloat ?? 2.0
-        
-        thumbIcon = aDecoder.decodeObjectForKey("thumbIcon") as? UIImage
-        
-        commonSetup()
-    }
-    
-    override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        
-        aCoder.encodeObject(minColor, forKey: "minColor")
-        aCoder.encodeObject(maxColor, forKey: "maxColor")
-        
-        aCoder.encodeObject(value, forKey: "value")
-        aCoder.encodeObject(minimumValue, forKey: "minimumValue")
-        aCoder.encodeObject(maximumValue, forKey: "maximumValue")
-        
-        aCoder.encodeObject(minimumValueImage, forKey: "minimumValueImage")
-        aCoder.encodeObject(maximumValueImage, forKey: "maximumValueImage")
-        
-        aCoder.encodeObject(thickness, forKey: "thickness")
-        
-        aCoder.encodeObject(thumbIcon, forKey: "thumbIcon")
-        
-    }
-    
-    private func commonSetup() {
-        self.layer.delegate = self
-        self.layer.addSublayer(_trackLayer)
-        self.layer.addSublayer(_thumbLayer)
-        _thumbLayer.addSublayer(_thumbIconLayer)
-    }
-    
-    //MARK: - Layout
-    
-    override func intrinsicContentSize()->CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: thumbSize)
-    }
-    
-    override func alignmentRectInsets() -> UIEdgeInsets {
-        return UIEdgeInsetsMake(4.0, 2.0, 4.0, 2.0)
-    }
-    
-    override func layoutSublayersOfLayer(layer: CALayer) {
-//        super.layoutSublayersOfLayer(layer)
-        
-        if layer != self.layer {return}
-        
-        var w = self.bounds.width
-        let h = self.bounds.height
-        var left:CGFloat = 2.0
-        
-        if let minImgLayer = _minTrackImageLayer {
-            minImgLayer.position = CGPointMake(0.0, h/2.0)
-            left = minImgLayer.bounds.width + 13.0
-        }
-        w -= left
-        
-        if let maxImgLayer = _maxTrackImageLayer {
-            maxImgLayer.position = CGPointMake(self.bounds.width, h/2.0)
-            w -= (maxImgLayer.bounds.width + 13.0)
-        }else{
-            w -= 2.0
-        }
-        
-        _trackLayer.bounds = CGRectMake(0, 0, w, thickness)
-        _trackLayer.position = CGPointMake(w/2.0 + left, h/2.0)
-        
-        let halfSize = thumbSize/2.0
-        var layerSize = thumbSize - 4.0
-        if let icon = thumbIcon {
-            layerSize = min(max(icon.size.height,icon.size.width),layerSize)
-            _thumbIconLayer.cornerRadius = 0.0
-            _thumbIconLayer.backgroundColor = UIColor.clearColor().CGColor
-        }else{
-            _thumbIconLayer.cornerRadius = layerSize/2.0
-        }
-        _thumbIconLayer.position = CGPointMake(halfSize, halfSize)
-        _thumbIconLayer.bounds = CGRectMake(0, 0, layerSize, layerSize)
-        
-        
-        updateThumbPosition(animated: false)
-    }
-    
-    
     
     //MARK: - Touch Tracking
     
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let pt = touch.locationInView(self)
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let pt = touch.location(in: self)
         
         let center = _thumbLayer.position
         let diameter = max(thumbSize,44.0)
-        let r = CGRectMake(center.x - diameter/2.0, center.y - diameter/2.0, diameter, diameter)
-        if CGRectContainsPoint(r, pt){
-            sendActionsForControlEvents(UIControlEvents.TouchDown)
+        let r = CGRect(x: center.x - diameter/2.0, y: center.y - diameter/2.0, width: diameter, height: diameter)
+        if r.contains(pt){
+            sendActions(for: UIControlEvents.touchDown)
             return true
         }
         return false
     }
     
-    override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let pt = touch.locationInView(self)
-        let newValue = valueForLocation(pt)
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let pt = touch.location(in: self)
+        let newValue = valueForLocation(point: pt)
         setValue(newValue, animated: false)
         if(continuous){
-            sendActionsForControlEvents(UIControlEvents.ValueChanged)
+            sendActions(for: UIControlEvents.valueChanged)
             actionBlock(self,newValue)
         }
         return true
     }
     
-    override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-        if let pt = touch?.locationInView(self){
-            let newValue = valueForLocation(pt)
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        if let pt = touch?.location(in: self){
+            let newValue = valueForLocation(point: pt)
             setValue(newValue, animated: false)
         }
         actionBlock(self,_value)
-        sendActionsForControlEvents([UIControlEvents.ValueChanged, UIControlEvents.TouchUpInside])
-
+        sendActions(for: [UIControlEvents.valueChanged, UIControlEvents.touchUpInside])
+        
     }
     
     //MARK: - Private Functions
     
-    private func updateThumbPosition(animated animated:Bool){
+    private func updateThumbPosition(animated: Bool){
         let diff = maximumValue - minimumValue
         let perc = CGFloat((value - minimumValue) / diff)
         
@@ -371,10 +367,10 @@ import UIKit
         if !animated{
             CATransaction.begin() //Move the thumb position without animations
             CATransaction.setValue(true, forKey: kCATransactionDisableActions)
-            _thumbLayer.position = CGPointMake(left + (trackWidth * perc), halfHeight)
+            _thumbLayer.position = CGPoint(x: left + (trackWidth * perc), y: halfHeight)
             CATransaction.commit()
         }else{
-            _thumbLayer.position = CGPointMake(left + (trackWidth * perc), halfHeight)
+            _thumbLayer.position = CGPoint(x: left + (trackWidth * perc), y: halfHeight)
         }
     }
     
@@ -405,12 +401,16 @@ import UIKit
     }
     
     private func updateTrackColors() {
+        
         if !hasRainbow {
-            _trackLayer.colors = [minColor.CGColor,maxColor.CGColor]
-            _trackLayer.locations = [0.0,1.0]
+            // The colors to use
+            _trackLayer.colors = [minColor, maxColor]
+            
+            // The location of each color, from left to right (min value 0, max value 1)
+            _trackLayer.locations = [0.0, 1.0]
             return
         }
-        //Otherwise make a rainbow with the saturation & lightness of the min color
+        
         var h:CGFloat = 0.0
         var s:CGFloat = 0.0
         var l:CGFloat = 0.0
@@ -418,13 +418,13 @@ import UIKit
         
         minColor.getHue(&h, saturation: &s, brightness: &l, alpha: &a)
         
-        let cnt = 40
+        let cnt = 4
         let step:CGFloat = 1.0 / CGFloat(cnt)
         let locations:[CGFloat] = (0...cnt).map({ i in return (step * CGFloat(i))})
-        _trackLayer.colors = locations.map({return UIColor(hue: $0, saturation: s, brightness: l, alpha: a).CGColor})
-        _trackLayer.locations = locations
+        let colors = locations.map({return UIColor(hue: $0, saturation: s, brightness: l, alpha: a).cgColor})
+        _trackLayer.colors = colors
+        _trackLayer.locations = locations as [NSNumber]
     }
 }
-
 
 
