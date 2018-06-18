@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC1C417D1B730A410083C062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C417C1B730A410083C062 /* AppDelegate.swift */; };
+		FC1C417F1B730A410083C062 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C417E1B730A410083C062 /* ViewController.swift */; };
+		FC1C41821B730A410083C062 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41801B730A410083C062 /* Main.storyboard */; };
+		FC1C41841B730A410083C062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41831B730A410083C062 /* Assets.xcassets */; };
+		FC1C41871B730A410083C062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1C41851B730A410083C062 /* LaunchScreen.storyboard */; };
+		FC1C418F1B730E530083C062 /* GradientSlider4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C418E1B730E530083C062 /* GradientSlider4.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FC1C41791B730A410083C062 /* GradientSlider4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientSlider4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC1C417C1B730A410083C062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC1C417E1B730A410083C062 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC1C41811B730A410083C062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC1C41831B730A410083C062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC1C41861B730A410083C062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC1C41881B730A410083C062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC1C418E1B730E530083C062 /* GradientSlider4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider4.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC1C41761B730A410083C062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC1C41701B730A410083C062 = {
+			isa = PBXGroup;
+			children = (
+				FC1C417B1B730A410083C062 /* GradientSlider4 */,
+				FC1C417A1B730A410083C062 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC1C417A1B730A410083C062 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC1C41791B730A410083C062 /* GradientSlider4.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC1C417B1B730A410083C062 /* GradientSlider4 */ = {
+			isa = PBXGroup;
+			children = (
+				FC1C417C1B730A410083C062 /* AppDelegate.swift */,
+				FC1C417E1B730A410083C062 /* ViewController.swift */,
+				FC1C41801B730A410083C062 /* Main.storyboard */,
+				FC1C418E1B730E530083C062 /* GradientSlider4.swift */,
+				FC1C41831B730A410083C062 /* Assets.xcassets */,
+				FC1C41851B730A410083C062 /* LaunchScreen.storyboard */,
+				FC1C41881B730A410083C062 /* Info.plist */,
+			);
+			name = GradientSlider4;
+			path = GradientSlider;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC1C41781B730A410083C062 /* GradientSlider4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC1C418B1B730A410083C062 /* Build configuration list for PBXNativeTarget "GradientSlider4" */;
+			buildPhases = (
+				FC1C41751B730A410083C062 /* Sources */,
+				FC1C41761B730A410083C062 /* Frameworks */,
+				FC1C41771B730A410083C062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GradientSlider4;
+			productName = GradientSlider;
+			productReference = FC1C41791B730A410083C062 /* GradientSlider4.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC1C41711B730A410083C062 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jonathan Hull";
+				TargetAttributes = {
+					FC1C41781B730A410083C062 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 29Y384GTLV;
+						LastSwiftMigration = 0930;
+					};
+				};
+			};
+			buildConfigurationList = FC1C41741B730A410083C062 /* Build configuration list for PBXProject "GradientSlider4" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC1C41701B730A410083C062;
+			productRefGroup = FC1C417A1B730A410083C062 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC1C41781B730A410083C062 /* GradientSlider4 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC1C41771B730A410083C062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC1C41871B730A410083C062 /* LaunchScreen.storyboard in Resources */,
+				FC1C41841B730A410083C062 /* Assets.xcassets in Resources */,
+				FC1C41821B730A410083C062 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC1C41751B730A410083C062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC1C417F1B730A410083C062 /* ViewController.swift in Sources */,
+				FC1C418F1B730E530083C062 /* GradientSlider4.swift in Sources */,
+				FC1C417D1B730A410083C062 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC1C41801B730A410083C062 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC1C41811B730A410083C062 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC1C41851B730A410083C062 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC1C41861B730A410083C062 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC1C41891B730A410083C062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FC1C418A1B730A410083C062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC1C418C1B730A410083C062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 29Y384GTLV;
+				INFOPLIST_FILE = GradientSlider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brad.GradientSlider4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		FC1C418D1B730A410083C062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 29Y384GTLV;
+				INFOPLIST_FILE = GradientSlider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brad.GradientSlider4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC1C41741B730A410083C062 /* Build configuration list for PBXProject "GradientSlider4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC1C41891B730A410083C062 /* Debug */,
+				FC1C418A1B730A410083C062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC1C418B1B730A410083C062 /* Build configuration list for PBXNativeTarget "GradientSlider4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC1C418C1B730A410083C062 /* Debug */,
+				FC1C418D1B730A410083C062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC1C41711B730A410083C062 /* Project object */;
+}
